@@ -5,18 +5,18 @@
   
   <title>JSONModel 的基本使用 | Thinking &amp;&amp; Coding</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="##前言接触 ios 开发有4个多月了，在这期间，做了一个小型的项目，也参与到公司项目的开发之中，也算是正式地成为一个 ios 开发者了。今天，偶然间接触到了 JSONModal 这个开源库之后，心里的感受只能用“相见恨晚”来诠释。 JSONModal 让我们对服务器 JSON 数据的解析变得如此简单，优雅。我们只需向服务器请求数据，然后几乎不需要做什么工作就可以得到一个我们想要的 modal，这">
+  <meta name="description" content="前言接触 ios 开发有4个多月了，在这期间，做了一个小型的项目，也参与到公司项目的开发之中，也算是正式地成为一个 ios 开发者了。今天，偶然间接触到了 JSONModal 这个开源库之后，心里的感受只能用“相见恨晚”来诠释。 JSONModal 让我们对服务器 JSON 数据的解析变得如此简单，优雅。我们只需向服务器请求数据，然后几乎不需要做什么工作就可以得到一个我们想要的 modal，这是一">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JSONModel 的基本使用">
-<meta property="og:url" content="http://yoursite.com/2016/08/12/2015-12-08-jsonmodelbasicusage/index.html">
+<meta property="og:url" content="http://yoursite.com/2016/08/12/JSONModelBasicUsage/index.html">
 <meta property="og:site_name" content="Thinking && Coding">
-<meta property="og:description" content="##前言接触 ios 开发有4个多月了，在这期间，做了一个小型的项目，也参与到公司项目的开发之中，也算是正式地成为一个 ios 开发者了。今天，偶然间接触到了 JSONModal 这个开源库之后，心里的感受只能用“相见恨晚”来诠释。 JSONModal 让我们对服务器 JSON 数据的解析变得如此简单，优雅。我们只需向服务器请求数据，然后几乎不需要做什么工作就可以得到一个我们想要的 modal，这">
-<meta property="og:image" content="http://www.touch-code-magazine.com/img/json.png">
-<meta property="og:updated_time" content="2016-08-11T16:35:57.000Z">
+<meta property="og:description" content="前言接触 ios 开发有4个多月了，在这期间，做了一个小型的项目，也参与到公司项目的开发之中，也算是正式地成为一个 ios 开发者了。今天，偶然间接触到了 JSONModal 这个开源库之后，心里的感受只能用“相见恨晚”来诠释。 JSONModal 让我们对服务器 JSON 数据的解析变得如此简单，优雅。我们只需向服务器请求数据，然后几乎不需要做什么工作就可以得到一个我们想要的 modal，这是一">
+<meta property="og:image" content="http://7xskiu.com1.z0.glb.clouddn.com/JSONModel.png">
+<meta property="og:updated_time" content="2016-08-12T16:41:37.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JSONModel 的基本使用">
-<meta name="twitter:description" content="##前言接触 ios 开发有4个多月了，在这期间，做了一个小型的项目，也参与到公司项目的开发之中，也算是正式地成为一个 ios 开发者了。今天，偶然间接触到了 JSONModal 这个开源库之后，心里的感受只能用“相见恨晚”来诠释。 JSONModal 让我们对服务器 JSON 数据的解析变得如此简单，优雅。我们只需向服务器请求数据，然后几乎不需要做什么工作就可以得到一个我们想要的 modal，这">
-<meta name="twitter:image" content="http://www.touch-code-magazine.com/img/json.png">
+<meta name="twitter:description" content="前言接触 ios 开发有4个多月了，在这期间，做了一个小型的项目，也参与到公司项目的开发之中，也算是正式地成为一个 ios 开发者了。今天，偶然间接触到了 JSONModal 这个开源库之后，心里的感受只能用“相见恨晚”来诠释。 JSONModal 让我们对服务器 JSON 数据的解析变得如此简单，优雅。我们只需向服务器请求数据，然后几乎不需要做什么工作就可以得到一个我们想要的 modal，这是一">
+<meta name="twitter:image" content="http://7xskiu.com1.z0.glb.clouddn.com/JSONModel.png">
   
     <link rel="alternate" href="/atom.xml" title="Thinking &amp;&amp; Coding" type="application/atom+xml">
   
@@ -58,9 +58,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -69,10 +69,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-2015-12-08-jsonmodelbasicusage" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-JSONModelBasicUsage" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2016/08/12/2015-12-08-jsonmodelbasicusage/" class="article-date">
-  <time datetime="2016-08-11T16:31:59.000Z" itemprop="datePublished">2016-08-12</time>
+    <a href="/2016/08/12/JSONModelBasicUsage/" class="article-date">
+  <time datetime="2016-08-12T15:52:17.000Z" itemprop="datePublished">2016-08-12</time>
 </a>
     
   </div>
@@ -91,29 +91,25 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>##前言<br>接触 ios 开发有4个多月了，在这期间，做了一个小型的项目，也参与到公司项目的开发之中，也算是正式地成为一个 ios 开发者了。今天，偶然间接触到了 JSONModal 这个开源库之后，心里的感受只能用“相见恨晚”来诠释。 JSONModal 让我们对服务器 JSON 数据的解析变得如此简单，优雅。我们只需向服务器请求数据，然后几乎不需要做什么工作就可以得到一个我们想要的 modal，这是一件多么幸福的事情啊！本文对JSONModal 的使用方法的介绍主要参考 <a href="https://github.com/icanzilb/JSONModel" target="_blank" rel="external">JSONModal</a> 库的 markdown 文件。</p>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>接触 ios 开发有4个多月了，在这期间，做了一个小型的项目，也参与到公司项目的开发之中，也算是正式地成为一个 ios 开发者了。今天，偶然间接触到了 JSONModal 这个开源库之后，心里的感受只能用“相见恨晚”来诠释。 JSONModal 让我们对服务器 JSON 数据的解析变得如此简单，优雅。我们只需向服务器请求数据，然后几乎不需要做什么工作就可以得到一个我们想要的 modal，这是一件多么幸福的事情啊！本文对JSONModal 的使用方法的介绍主要参考 <a href="https://github.com/icanzilb/JSONModel" target="_blank" rel="external">JSONModal</a> 库的 markdown 文件。</p>
 <a id="more"></a>
-<p>##简介<br>JSONModel 是一个能够让你根据获取到的服务器数据快速而智能地建立出一个数据模型（modal）的开源库。你可以在 ios 和 OSX 程序中使用该库。<br>JSONModel 能够自动地将你获取到 json 数据映射到你的 modal 中，从而减少你对这些数据进行解析的繁杂而不优雅的代码（表示没用该库之前一个对JSON数据一个一个进行解析的感觉好痛苦啊）。</p>
-<p><img src="http://www.touch-code-magazine.com/img/json.png" alt="JSONModel"></p>
-<p>##添加 JSONModal 到你的项目中</p>
-<p>###环境要求</p>
-<ul>
+<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>JSONModel 是一个能够让你根据获取到的服务器数据快速而智能地建立出一个数据模型（modal）的开源库。你可以在 ios 和 OSX 程序中使用该库。<br>JSONModel 能够自动地将你获取到 json 数据映射到你的 modal 中，从而减少你对这些数据进行解析的繁杂而不优雅的代码（表示没用该库之前一个对JSON数据一个一个进行解析的感觉好痛苦啊）。</p>
+<p><img src="http://7xskiu.com1.z0.glb.clouddn.com/JSONModel.png" alt="JSONModel"></p>
+<h1 id="添加-JSONModal-到你的项目中"><a href="#添加-JSONModal-到你的项目中" class="headerlink" title="添加 JSONModal 到你的项目中"></a>添加 JSONModal 到你的项目中</h1><h2 id="环境要求"><a href="#环境要求" class="headerlink" title="环境要求"></a>环境要求</h2><ul>
 <li>ARC内存管理</li>
 <li>iOS 5.0+ / OSX 10.7+</li>
 <li>SystemConfiguration.framework</li>
 </ul>
-<p>##获取 JSONModal</p>
-<p>两种方法：</p>
-<p>####直接使用源文件</p>
-<ol>
+<h1 id="获取-JSONModal"><a href="#获取-JSONModal" class="headerlink" title="获取 JSONModal"></a>获取 JSONModal</h1><p>两种方法：</p>
+<h2 id="直接使用源文件"><a href="#直接使用源文件" class="headerlink" title="直接使用源文件"></a>直接使用源文件</h2><ol>
 <li>到 github 直接将 JSONModal 整个源文件下载下来</li>
 <li>添加 JSONModel 整个文件夹到你的项目当中</li>
 <li>添加依赖库SystemConfiguration.framework</li>
 </ol>
-<p>####利用Cocoa pods<br>在 Podfile 中添加如下语句：</p>
+<h2 id="利用Cocoa-pods"><a href="#利用Cocoa-pods" class="headerlink" title="利用Cocoa pods"></a>利用Cocoa pods</h2><p>在 Podfile 中添加如下语句：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod &apos;JSONModel&apos;</div></pre></td></tr></table></figure>
 <p>关于 Cocoa pods 的使用请自行搜索相关的资料</p>
-<p>##基本用法<br>假设你获取到的 JSON 数据如下所示：</p>
+<h1 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h1><p>假设你获取到的 JSON 数据如下所示：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;&quot;id&quot;:&quot;10&quot;, &quot;country&quot;:&quot;Germany&quot;, &quot;dialCode&quot;: 49, &quot;isInEurope&quot;:true&#125;</div></pre></td></tr></table></figure>
 <ul>
 <li>创建一个类作为你的 modal 类，并且使得该类继承 JSONModel 类</li>
@@ -122,15 +118,13 @@
 </ul>
 <p>在 .m 文件中无需写任何的代码 </p>
 <ul>
-<li>初始化数据<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">#import &quot;CountryModel.h&quot;</div><div class="line"></div><div class="line">NSString* json = (fetch here JSON from Internet) ... </div><div class="line"></div><div class="line">NSError* err = nil;</div><div class="line"></div><div class="line">CountryModel* country = [[CountryModel alloc] initWithString:json error:&amp;err];</div></pre></td></tr></table></figure>
-</li>
+<li>初始化数据</li>
 </ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">#import &quot;CountryModel.h&quot;</div><div class="line"></div><div class="line">NSString* json = (fetch here JSON from Internet) ... </div><div class="line"></div><div class="line">NSError* err = nil;</div><div class="line"></div><div class="line">CountryModel* country = [[CountryModel alloc] initWithString:json error:&amp;err];</div></pre></td></tr></table></figure>
 <p>细心的你可能会发现，我们在 CountryModel 类中所声明的属性的类型与 json 数据中相关的类型是不同的，这样真的可以么？是的， JSONModal 就是这样智能，你要做的只是在你的 CountryModel 类中声明你想要的属性类型就可以了。<br>以下列出各种情况下的一些示例代码</p>
-<p>##示例代码</p>
-<p>###1. 简单的映射(获取到的数据是一个简单的字典)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;id&quot;: &quot;123&quot;,</div><div class="line">  &quot;name&quot;: &quot;Product name&quot;,</div><div class="line">  &quot;price&quot;: 12.95</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h1><h2 id="1-简单的映射-获取到的数据是一个简单的字典"><a href="#1-简单的映射-获取到的数据是一个简单的字典" class="headerlink" title="1. 简单的映射(获取到的数据是一个简单的字典)"></a>1. 简单的映射(获取到的数据是一个简单的字典)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;id&quot;: &quot;123&quot;,</div><div class="line">  &quot;name&quot;: &quot;Product name&quot;,</div><div class="line">  &quot;price&quot;: 12.95</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">@interface ProductModel : JSONModel</div><div class="line">@property (assign, nonatomic) int id;</div><div class="line">@property (strong, nonatomic) NSString* name;</div><div class="line">@property (assign, nonatomic) float price;</div><div class="line">@end</div><div class="line"></div><div class="line">@implementation ProductModel</div><div class="line">@end</div></pre></td></tr></table></figure>
-<p>###2. model 之中嵌套了 model 的情况<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;order_id&quot;: 104,</div><div class="line">  &quot;total_price&quot;: 13.45,</div><div class="line">  &quot;product&quot; : &#123;</div><div class="line">    &quot;id&quot;: &quot;123&quot;,</div><div class="line">    &quot;name&quot;: &quot;Product name&quot;,</div><div class="line">    &quot;price&quot;: 12.95</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="2-model-之中嵌套了-model-的情况"><a href="#2-model-之中嵌套了-model-的情况" class="headerlink" title="2. model 之中嵌套了 model 的情况"></a>2. model 之中嵌套了 model 的情况</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;order_id&quot;: 104,</div><div class="line">  &quot;total_price&quot;: 13.45,</div><div class="line">  &quot;product&quot; : &#123;</div><div class="line">    &quot;id&quot;: &quot;123&quot;,</div><div class="line">    &quot;name&quot;: &quot;Product name&quot;,</div><div class="line">    &quot;price&quot;: 12.95</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">@interface OrderModel : JSONModel</div><div class="line">@property (assign, nonatomic) int order_id;</div><div class="line">@property (assign, nonatomic) float total_price;</div><div class="line">@property (strong, nonatomic) ProductModel* product;//直接声明一个product 所对应的对象即可</div><div class="line">@end</div><div class="line"></div><div class="line">@implementation OrderModel</div><div class="line">@end</div></pre></td></tr></table></figure>
 <p>###3. 内嵌model并且内部model拥有多个元素（数组）</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;order_id&quot;: 104,</div><div class="line">  &quot;total_price&quot;: 103.45,</div><div class="line">  &quot;products&quot; : [</div><div class="line">    &#123;</div><div class="line">      &quot;id&quot;: &quot;123&quot;,</div><div class="line">      &quot;name&quot;: &quot;Product #1&quot;,</div><div class="line">      &quot;price&quot;: 12.95</div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">      &quot;id&quot;: &quot;137&quot;,</div><div class="line">      &quot;name&quot;: &quot;Product #2&quot;,</div><div class="line">      &quot;price&quot;: 82.95</div><div class="line">    &#125;</div><div class="line">  ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -155,7 +149,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/08/12/2015-12-08-jsonmodelbasicusage/" data-id="cirqjo49g0000nofyrl8vzucf" class="article-share-link">Delen</a>
+      <a data-url="http://yoursite.com/2016/08/12/JSONModelBasicUsage/" data-id="cirrxq3kg00009sxofs2cy6wu" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -179,7 +173,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archieven</h3>
+    <h3 class="widget-title">Archives</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li></ul>
     </div>
@@ -189,12 +183,12 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recente berichten</h3>
+    <h3 class="widget-title">Articles récents</h3>
     <div class="widget">
       <ul>
         
           <li>
-            <a href="/2016/08/12/2015-12-08-jsonmodelbasicusage/">JSONModel 的基本使用</a>
+            <a href="/2016/08/12/JSONModelBasicUsage/">JSONModel 的基本使用</a>
           </li>
         
       </ul>
@@ -210,7 +204,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2016 light_bo<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
