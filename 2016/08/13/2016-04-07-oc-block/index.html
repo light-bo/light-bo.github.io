@@ -16,11 +16,11 @@
 
     <title>
         
-          light_bo&#39;s blog
+          OC 中的 block｜light_bo&#39;s blog
         
     </title>
 
-    <link rel="canonical" href="http://light-bo.github.io/archives/2016/08/">
+    <link rel="canonical" href="http://light-bo.github.io/2016/08/13/2016-04-07-oc-block/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -55,7 +55,7 @@
 <!-- hack iOS CSS :active style -->
 <body ontouchstart="">
 <!-- Navigation -->
-<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "false" data-istags="false
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "true" data-istags="false
 " data-ishome = "false" >
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -127,6 +127,159 @@
 
     <!-- Main Content -->
     
+<!-- Image to hack wechat -->
+<!--only post-->
+
+    
+        <img class="wechat-title-img" src="http://7xskiu.com1.z0.glb.clouddn.com/blog_header.jpg">
+    
+
+<style>
+
+    header.intro-header{
+        background-image: url('http://7xskiu.com1.z0.glb.clouddn.com/blog_header.jpg')
+    }
+
+</style>
+
+<header class="intro-header" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>OC 中的 block</h1>
+                    
+                    <span class="meta">
+                         作者 light_bo
+                         <span>
+                          日期 2016-08-13
+                         </span>
+                    </span>
+                    <div class="tags text-center">
+                        
+                        <a class="tag" href="/tags/#iOS" title="iOS">iOS</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-title-haojen">
+        <span>
+            OC 中的 block
+        </span>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+                <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+
+                <h1 id="何为-block"><a href="#何为-block" class="headerlink" title="何为 block"></a>何为 block</h1><p>block 在 OC 语言中，被视为是一种类型，在 iOS 4.0 之后被引入到 OC 中，理解 block 可以与 C 语言中的函数指针进行类比，这样有利于了解 block 相关的特性和本质。block 类似于函数指针，又不同于函数指针。</p>
+<a id="more"></a>
+<h1 id="block-VS-函数指针"><a href="#block-VS-函数指针" class="headerlink" title="block VS 函数指针"></a>block VS 函数指针</h1><p>block 相对于函数指针来说，还是有很多的区别的，主要表现为：</p>
+<ul>
+<li>block 是内联的（内联即编译器编译的时候代码是直接嵌入的），而函数的调用是需要在堆栈上进行的，这一点 block 明显效率会高一些</li>
+<li>外部对象在 block 中默认是只读的</li>
+<li>在 OC 中，block 被当成是一种类型对象进行使用</li>
+</ul>
+<h1 id="使用-block-时注意事项"><a href="#使用-block-时注意事项" class="headerlink" title="使用 block 时注意事项"></a>使用 block 时注意事项</h1><p>block 的使用，会使得程序中的代码看起来非常简洁，清晰，如果在程序中需要使用到回调时， block 语法可以说是首选，但在使用 block 时，要特别两个关键字的使用， 一个是<strong>__block</strong>  ,一个则是  <strong>__weak</strong>。 </p>
+<ul>
+<li>上面说过 block 中的外部变量默认是只读的，但是在某些情况下，我们需要改变 block 中的值，这时我们就需要将外部变量利用 <strong>__block</strong> 关键字进行修饰。如下代码：</li>
+</ul>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">__block CGPoint center = CGPointZero;</div><div class="line">void(^pointAddHandler)(CGPoint addPoint) = ^(CGPoint addPoint) &#123;</div><div class="line">  center = addPoint;//修改外部变量</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>注意避免循环引用；block 默认会保有其作用域内变量的强引用，当一个类声明一个 block 属性时，就需要注意避免在 block 中直接使用 self 了，这时需要声明一个 self 的弱引用<code>__weak tydeof(self) weakSelf = self</code>，然后在 block 中使用 <code>weakSelf</code>来访问类中的相关成员。</li>
+</ul>
+
+
+                <hr>
+
+                
+
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2016/08/13/2016-04-10-uitextview-placeholder/" data-toggle="tooltip" data-placement="top" title="让 UITextView 带上 placeholder">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2016/08/13/2016-01-03-several-tab-pages/" data-toggle="tooltip" data-placement="top" title="iOS 多个 tab 页 demo">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                
+                <!-- 多说评论框 start -->
+                <div class="comment">
+                    <div class="ds-thread"
+                        data-thread-key="2016/08/13/2016-04-07-oc-block/"
+                        data-title="OC 中的 block"
+                        data-url="http://light-bo.github.io/2016/08/13/2016-04-07-oc-block/" >
+                    </div>
+                </div>
+                <!-- 多说评论框 end -->
+                
+
+                
+
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col" >
+                <div class="toc-wrap">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#何为-block"><span class="toc-text">何为 block</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#block-VS-函数指针"><span class="toc-text">block VS 函数指针</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用-block-时注意事项"><span class="toc-text">使用 block 时注意事项</span></a></li></ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+        </div>
+
+    </div>
+</article>
+
+
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    // dynamic User by Hux
+    var _user = 'light-bo';
+
+    // duoshuo comment query.
+    var duoshuoQuery = {short_name: _user };
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+</script>
+<!-- 多说公共JS代码 end -->
+
+
+
+
+
+
+
     <!-- Footer -->
     <!-- Footer -->
 <footer>

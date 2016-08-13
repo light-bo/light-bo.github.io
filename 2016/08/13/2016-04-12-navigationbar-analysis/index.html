@@ -16,11 +16,11 @@
 
     <title>
         
-          light_bo&#39;s blog
+          说说导航栏(UINavigationBar)｜light_bo&#39;s blog
         
     </title>
 
-    <link rel="canonical" href="http://light-bo.github.io/archives/2016/08/">
+    <link rel="canonical" href="http://light-bo.github.io/2016/08/13/2016-04-12-navigationbar-analysis/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -55,7 +55,7 @@
 <!-- hack iOS CSS :active style -->
 <body ontouchstart="">
 <!-- Navigation -->
-<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "false" data-istags="false
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "true" data-istags="false
 " data-ishome = "false" >
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -127,6 +127,150 @@
 
     <!-- Main Content -->
     
+<!-- Image to hack wechat -->
+<!--only post-->
+
+    
+        <img class="wechat-title-img" src="http://7xskiu.com1.z0.glb.clouddn.com/blog_header.jpg">
+    
+
+<style>
+
+    header.intro-header{
+        background-image: url('http://7xskiu.com1.z0.glb.clouddn.com/blog_header.jpg')
+    }
+
+</style>
+
+<header class="intro-header" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>说说导航栏(UINavigationBar)</h1>
+                    
+                    <span class="meta">
+                         作者 light_bo
+                         <span>
+                          日期 2016-08-13
+                         </span>
+                    </span>
+                    <div class="tags text-center">
+                        
+                        <a class="tag" href="/tags/#iOS" title="iOS">iOS</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-title-haojen">
+        <span>
+            说说导航栏(UINavigationBar)
+        </span>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+                <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+
+                <h1 id="你真的知道导航栏的组成么？"><a href="#你真的知道导航栏的组成么？" class="headerlink" title="你真的知道导航栏的组成么？"></a>你真的知道导航栏的组成么？</h1><a id="more"></a>
+<p><img src="http://7xskiu.com2.z0.glb.clouddn.com/navigationbar_component.png" alt="导航栏侧面视图"><br>从上面的视图我们可以看到，我们非常“熟悉”的导航栏其实是由六个部分组成的，这六个部分从左到右分别为:<br><img src="http://7xskiu.com2.z0.glb.clouddn.com/component_names.png" alt=""></p>
+<p>很显然，当我们需要设置导导航栏的背景颜色的时候，仅仅设置 backgroundColor 是不行的，导航栏的背景色由 _UIBackdropView 及其子视图决定，至于如何设置导航栏的背景颜色，本文不讨论。</p>
+<h1 id="认识-UINavigationBar-的-translucent-属性"><a href="#认识-UINavigationBar-的-translucent-属性" class="headerlink" title="认识 UINavigationBar 的 translucent 属性"></a>认识 UINavigationBar 的 translucent 属性</h1><p>translucent 与其字面含义一样，设置的是 navigationbar 的透明度，改变该属性的时候，除了对透明度的影响外，还有一点值得注意的，就是该属性的改变，会改变到当前 UIViewcontroller 的根视图（self.view）相对于屏幕的位置，如下图所示：<br><img src="http://7xskiu.com2.z0.glb.clouddn.com/translucent_yes.png" alt="">  </p>
+<p>translucent 设置为 YES 的情况<br><img src="http://7xskiu.com2.z0.glb.clouddn.com/translucent_no.png" alt=""><br>translucent 设置为 NO 的情况  </p>
+<p>  从上面的两个图我们可以看出，当 translucent 设置为 YES 的时候，UIViewcontroller 的根视图会铺满整个整个屏幕，而当 translucent 为 NO 的时候， UIViewcontroller 的根视图则会从导航栏底部开始铺满整个屏幕，其实这也是很容易理解的，当 translucent 为 YES 的时候，导航栏是”透明”的，这时 UIViewcontroller 的根视图铺满整个屏幕是可以的，因为导航栏是“透明”的，我们还是可以看到导航栏下“隐隐约约”的根视图，但当导航栏不是“透明”的时候，显然导航栏底部就不应该有根视图的一部分了，我想，这就是之所以如此设计的原因吧。</p>
+<h1 id="致谢"><a href="#致谢" class="headerlink" title="致谢"></a>致谢</h1><p>谢谢您的阅读，欢迎交流和指正。</p>
+
+
+                <hr>
+
+                
+
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2016/08/13/2016-04-18-nsarray-json-file/" data-toggle="tooltip" data-placement="top" title="读取 json 文件中的数据">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2016/08/13/2016-04-10-uitextview-placeholder/" data-toggle="tooltip" data-placement="top" title="让 UITextView 带上 placeholder">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                
+                <!-- 多说评论框 start -->
+                <div class="comment">
+                    <div class="ds-thread"
+                        data-thread-key="2016/08/13/2016-04-12-navigationbar-analysis/"
+                        data-title="说说导航栏(UINavigationBar)"
+                        data-url="http://light-bo.github.io/2016/08/13/2016-04-12-navigationbar-analysis/" >
+                    </div>
+                </div>
+                <!-- 多说评论框 end -->
+                
+
+                
+
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col" >
+                <div class="toc-wrap">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#你真的知道导航栏的组成么？"><span class="toc-text">你真的知道导航栏的组成么？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#认识-UINavigationBar-的-translucent-属性"><span class="toc-text">认识 UINavigationBar 的 translucent 属性</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#致谢"><span class="toc-text">致谢</span></a></li></ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+        </div>
+
+    </div>
+</article>
+
+
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    // dynamic User by Hux
+    var _user = 'light-bo';
+
+    // duoshuo comment query.
+    var duoshuoQuery = {short_name: _user };
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+</script>
+<!-- 多说公共JS代码 end -->
+
+
+
+
+
+
+
     <!-- Footer -->
     <!-- Footer -->
 <footer>
