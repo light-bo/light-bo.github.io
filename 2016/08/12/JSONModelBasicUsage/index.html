@@ -1,98 +1,182 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
-  <title>JSONModel 的基本使用 | Thinking &amp;&amp; Coding</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前言接触 ios 开发有4个多月了，在这期间，做了一个小型的项目，也参与到公司项目的开发之中，也算是正式地成为一个 ios 开发者了。今天，偶然间接触到了 JSONModal 这个开源库之后，心里的感受只能用“相见恨晚”来诠释。 JSONModal 让我们对服务器 JSON 数据的解析变得如此简单，优雅。我们只需向服务器请求数据，然后几乎不需要做什么工作就可以得到一个我们想要的 modal，这是一">
-<meta property="og:type" content="article">
-<meta property="og:title" content="JSONModel 的基本使用">
-<meta property="og:url" content="http://yoursite.com/2016/08/12/JSONModelBasicUsage/index.html">
-<meta property="og:site_name" content="Thinking && Coding">
-<meta property="og:description" content="前言接触 ios 开发有4个多月了，在这期间，做了一个小型的项目，也参与到公司项目的开发之中，也算是正式地成为一个 ios 开发者了。今天，偶然间接触到了 JSONModal 这个开源库之后，心里的感受只能用“相见恨晚”来诠释。 JSONModal 让我们对服务器 JSON 数据的解析变得如此简单，优雅。我们只需向服务器请求数据，然后几乎不需要做什么工作就可以得到一个我们想要的 modal，这是一">
-<meta property="og:image" content="http://7xskiu.com1.z0.glb.clouddn.com/JSONModel.png">
-<meta property="og:updated_time" content="2016-08-12T16:49:08.000Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JSONModel 的基本使用">
-<meta name="twitter:description" content="前言接触 ios 开发有4个多月了，在这期间，做了一个小型的项目，也参与到公司项目的开发之中，也算是正式地成为一个 ios 开发者了。今天，偶然间接触到了 JSONModal 这个开源库之后，心里的感受只能用“相见恨晚”来诠释。 JSONModal 让我们对服务器 JSON 数据的解析变得如此简单，优雅。我们只需向服务器请求数据，然后几乎不需要做什么工作就可以得到一个我们想要的 modal，这是一">
-<meta name="twitter:image" content="http://7xskiu.com1.z0.glb.clouddn.com/JSONModel.png">
-  
-    <link rel="alternate" href="/atom.xml" title="Thinking &amp;&amp; Coding" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link rel="stylesheet" href="/css/style.css">
-  
+<html lang="en">
 
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="null">
+    <meta name="keyword"  content="undefined">
+    <meta name="theme-color" content="#600090">
+    <meta name="msapplication-navbutton-color" content="#600090">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#60090">
+    <link rel="shortcut icon" href="/img/coffee.png">
+
+    <title>
+        
+          JSONModel 的基本使用｜undefined
+        
+    </title>
+
+    <link rel="canonical" href="http://yoursite.com/2016/08/12/JSONModelBasicUsage/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/blog-style.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    <!-- Custom Fonts -->
+    <link href="http://cdn.staticfile.org/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
 </head>
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Thinking &amp;&amp; Coding</a>
-      </h1>
-      
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">分享，让思维更美丽 ^_^</a>
-        </h2>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
-      </div>
-    </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main"><article id="post-JSONModelBasicUsage" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/08/12/JSONModelBasicUsage/" class="article-date">
-  <time datetime="2016-08-12T15:52:17.000Z" itemprop="datePublished">2016-08-12</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      JSONModel 的基本使用
-    </h1>
-  
+<style>
 
-      </header>
+    header.intro-header{
+        background-image: url('undefined')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "true" data-istags="false
+" data-ishome = "false" >
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">
+                <span class="brand-logo">
+                    light_bo
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+    <!-- Main Content -->
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>接触 ios 开发有4个多月了，在这期间，做了一个小型的项目，也参与到公司项目的开发之中，也算是正式地成为一个 ios 开发者了。今天，偶然间接触到了 JSONModal 这个开源库之后，心里的感受只能用“相见恨晚”来诠释。 JSONModal 让我们对服务器 JSON 数据的解析变得如此简单，优雅。我们只需向服务器请求数据，然后几乎不需要做什么工作就可以得到一个我们想要的 modal，这是一件多么幸福的事情啊！本文对JSONModal 的使用方法的介绍主要参考 <a href="https://github.com/icanzilb/JSONModel" target="_blank" rel="external">JSONModal</a> 库的 markdown 文件。</p>
-<a id="more"></a>
+<!-- Image to hack wechat -->
+<!--only post-->
+
+    
+        <img class="wechat-title-img" src="http://7xskiu.com1.z0.glb.clouddn.com/JSONModel.png">
+    
+
+<style>
+
+    header.intro-header{
+        background-image: url('http://7xskiu.com1.z0.glb.clouddn.com/JSONModel.pngundefined')
+    }
+
+</style>
+
+<header class="intro-header" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>JSONModel 的基本使用</h1>
+                    
+                    <span class="meta">
+                         作者 light_bo
+                         <span>
+                          日期 2016-08-12
+                         </span>
+                    </span>
+                    <div class="tags text-center">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-title-haojen">
+        <span>
+            JSONModel 的基本使用
+        </span>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+                <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+
+                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>接触 ios 开发有4个多月了，在这期间，做了一个小型的项目，也参与到公司项目的开发之中，也算是正式地成为一个 ios 开发者了。今天，偶然间接触到了 JSONModal 这个开源库之后，心里的感受只能用“相见恨晚”来诠释。 JSONModal 让我们对服务器 JSON 数据的解析变得如此简单，优雅。我们只需向服务器请求数据，然后几乎不需要做什么工作就可以得到一个我们想要的 modal，这是一件多么幸福的事情啊！本文对JSONModal 的使用方法的介绍主要参考 <a href="https://github.com/icanzilb/JSONModel" target="_blank" rel="external">JSONModal</a> 库的 markdown 文件。<br><a id="more"></a></p>
 <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>JSONModel 是一个能够让你根据获取到的服务器数据快速而智能地建立出一个数据模型（modal）的开源库。你可以在 ios 和 OSX 程序中使用该库。<br>JSONModel 能够自动地将你获取到 json 数据映射到你的 modal 中，从而减少你对这些数据进行解析的繁杂而不优雅的代码（表示没用该库之前一个对JSON数据一个一个进行解析的感觉好痛苦啊）。</p>
 <p><img src="http://7xskiu.com1.z0.glb.clouddn.com/JSONModel.png" alt="JSONModel"></p>
 <h1 id="添加-JSONModal-到你的项目中"><a href="#添加-JSONModal-到你的项目中" class="headerlink" title="添加 JSONModal 到你的项目中"></a>添加 JSONModal 到你的项目中</h1><h2 id="环境要求"><a href="#环境要求" class="headerlink" title="环境要求"></a>环境要求</h2><ul>
@@ -147,87 +231,176 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">@protocol ProductModel</div><div class="line">@end</div><div class="line"></div><div class="line">@interface ProductModel : JSONModel</div><div class="line">@property (assign, nonatomic) int id;</div><div class="line">@property (strong, nonatomic) NSString* name;</div><div class="line">@property (assign, nonatomic) float price;</div><div class="line">@end</div><div class="line"></div><div class="line">@implementation ProductModel</div><div class="line">@end</div><div class="line"></div><div class="line">@interface OrderModel : JSONModel</div><div class="line">@property (assign, nonatomic) int order_id;</div><div class="line">@property (assign, nonatomic) float total_price;</div><div class="line">@property (strong, nonatomic) NSArray&lt;ProductModel, ConvertOnDemand&gt;* products;//添加ConvertOnDemand</div><div class="line">@end</div><div class="line"></div><div class="line">@implementation OrderModel</div><div class="line">@end</div></pre></td></tr></table></figure>
 <h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p>谢谢您的阅读，如果有什么意见和建议，欢迎交流！</p>
 
-      
+
+                <hr>
+
+                
+
+                <ul class="pager">
+                    
+                    
+                </ul>
+
+                
+
+                
+
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col" >
+                <div class="toc-wrap">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#简介"><span class="toc-text">简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#添加-JSONModal-到你的项目中"><span class="toc-text">添加 JSONModal 到你的项目中</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#环境要求"><span class="toc-text">环境要求</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#获取-JSONModal"><span class="toc-text">获取 JSONModal</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#直接使用源文件"><span class="toc-text">直接使用源文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#利用Cocoa-pods"><span class="toc-text">利用Cocoa pods</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#基本用法"><span class="toc-text">基本用法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#示例代码"><span class="toc-text">示例代码</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-简单的映射-获取到的数据是一个简单的字典"><span class="toc-text">1. 简单的映射(获取到的数据是一个简单的字典)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-model-之中嵌套了-model-的情况"><span class="toc-text">2. model 之中嵌套了 model 的情况</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-内嵌model并且内部model拥有多个元素（数组）"><span class="toc-text">3. 内嵌model并且内部model拥有多个元素（数组）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-model-多层嵌套-3-层以上"><span class="toc-text">4. model 多层嵌套(3 层以上)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-下滑线的命名映射到驼峰式的命名"><span class="toc-text">5. 下滑线的命名映射到驼峰式的命名  </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-可选属性"><span class="toc-text">6. 可选属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-忽略相关属性"><span class="toc-text">7. 忽略相关属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-设置-model-的所有的属性为可选的属性"><span class="toc-text">8. 设置 model 的所有的属性为可选的属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-惰性解析转化"><span class="toc-text">9. 惰性解析转化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#写在最后"><span class="toc-text">写在最后</span></a></li></ol></li></ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+        </div>
+
     </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/08/12/JSONModelBasicUsage/" data-id="cirrzfs250000d5xo6tz65vtj" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-    
-  
 </article>
 
-</section>
-        
-          <aside id="sidebar">
-  
-    
 
-  
-    
 
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li></ul>
+
+
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <span class="text-muted"style="font-size: 14px">双击导航条返回顶部</span>
+                <br>
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/light-bo">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; light_bo 2016
+                    <br>
+                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
+                    <br>
+                    Theme by <a href="https://haojen.github.io/">Haojen Ma</a>
+                </p>
+
+            </div>
+        </div>
     </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2016/08/12/JSONModelBasicUsage/">JSONModel 的基本使用</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2016 light_bo<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
 </footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/blog.js"></script>
 
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://yoursite.com/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("http://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+<!-- Google Analytics -->
 
 
-<script src="/js/script.js"></script>
 
-  </div>
+<!-- Baidu Tongji -->
+
+<script>
+    var _baId = '1d052ac624dc77b54eefe6e64ee7228e';
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?" + _baId;
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<!-- swiftype -->
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','undefined','2.0.0');
+</script>
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    <!--wechat title img-->
+    <img class="wechat-title-img" src="http://7xskiu.com1.z0.glb.clouddn.com/avatar.jpg">
 </body>
+
 </html>
