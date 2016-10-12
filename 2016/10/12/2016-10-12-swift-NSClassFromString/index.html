@@ -16,11 +16,11 @@
 
     <title>
         
-          说说 iOS 的多线程｜light_bo&#39;s blog
+          当 Swift 遇上 NSClassFromString｜light_bo&#39;s blog
         
     </title>
 
-    <link rel="canonical" href="http://light-bo.github.io/2016/08/13/2016-06-05-multithread/">
+    <link rel="canonical" href="http://light-bo.github.io/2016/10/12/2016-10-12-swift-NSClassFromString/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -131,13 +131,13 @@
 <!--only post-->
 
     
-        <img class="wechat-title-img" src="http://7xskiu.com1.z0.glb.clouddn.com/github.jpg">
+        <img class="wechat-title-img" src="http://7xskiu.com1.z0.glb.clouddn.com/blog_header.jpg">
     
 
 <style>
 
     header.intro-header{
-        background-image: url('http://7xskiu.com1.z0.glb.clouddn.com/github.jpgundefined')
+        background-image: url('http://7xskiu.com1.z0.glb.clouddn.com/blog_header.jpg')
     }
 
 </style>
@@ -147,17 +147,17 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
                 <div class="post-heading">
-                    <h1>说说 iOS 的多线程</h1>
+                    <h1>当 Swift 遇上 NSClassFromString</h1>
                     
                     <span class="meta">
                          作者 light_bo
                          <span>
-                          日期 2016-08-13
+                          日期 2016-10-12
                          </span>
                     </span>
                     <div class="tags text-center">
                         
-                        <a class="tag" href="/tags/#iOS" title="iOS">iOS</a>
+                        <a class="tag" href="/tags/#Swift" title="Swift">Swift</a>
                         
                     </div>
                 </div>
@@ -166,7 +166,7 @@
     </div>
     <div class="post-title-haojen">
         <span>
-            说说 iOS 的多线程
+            当 Swift 遇上 NSClassFromString
         </span>
     </div>
 </header>
@@ -178,13 +178,24 @@
                 <!-- Post Container -->
             <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
 
-                <a id="more"></a>
-<h1 id="说几句"><a href="#说几句" class="headerlink" title="说几句"></a>说几句</h1><p>对于客户端程序来说，界面的操作是否流畅是衡量这个程序质量高低很重要的指标。对于 iOS App 来说，程序的主线程全责负责了 UI 的处理，要使得程序能够流畅地运行，我们就不能去阻塞主线程，一旦主线程受到一点点的 “阻塞” 伤害，程序就敢马上 “卡顿” 给你看。<br>因此，对于程序中一些与 UI 无关的比较 “耗时” 的操作，我们必须将其安排给非主线程进行处理，也就是需要用到多线程，本文简单地对 iOS 的多线程进行介绍，只说明一些关键的概念，不贴任何的代码。</p>
-<h1 id="几种方法"><a href="#几种方法" class="headerlink" title="几种方法"></a>几种方法</h1><h2 id="NSThread"><a href="#NSThread" class="headerlink" title="NSThread"></a>NSThread</h2><p>这是很基本的一种方法，但是由于使用这种方法，我们需要自己管理线程的生命周期，这是一件 “很烦” 的事情，而且也不利于我们将精力集中在逻辑的处理上面，我认为，技术本质上也是工具，那么作为 “工具”，就应该能够让我们将精力更多地集中在业务逻辑的处理上。</p>
-<h2 id="NSOperation-NSOperationQueue"><a href="#NSOperation-NSOperationQueue" class="headerlink" title="NSOperation/NSOperationQueue"></a>NSOperation/NSOperationQueue</h2><p>这是建立在 GCD 技术上的一种方法，在 GCD 的基础上进行了一层 “面向对象” 的封装，因为是建立在 GCD 的基础上的，与纯粹的 GCD 相比的话，效率自然很逊色一些，但是利用 NSOperation/NSOperationQueue 进行多线程编程的话，我们可以非常方便地对线程的执行<br>顺序进行约束和控制。</p>
-<h2 id="GCD"><a href="#GCD" class="headerlink" title="GCD"></a>GCD</h2><p>这是 Apple 推荐的一套 “多核” 的多线程处理方案，也是我们最经常用到的。使用起来非常方便。</p>
-<h1 id="一些关键概念"><a href="#一些关键概念" class="headerlink" title="一些关键概念"></a>一些关键概念</h1><h2 id="串行队列"><a href="#串行队列" class="headerlink" title="串行队列"></a>串行队列</h2><p>串行队列指的是工作线程在取该队列中任务时是一个任务一个任务顺序进行的，队列中下一个任务的执行需要等到上一个任务执行完成。</p>
-<h2 id="并发队列"><a href="#并发队列" class="headerlink" title="并发队列"></a>并发队列</h2><p>并发队列中的任务则可以同时有多个任务被多个线程进行处理，不同任务被工作线程取的时候是按照 “FIFO” 原则的，但是由于在多线程环境下，这些任务的完成次序则可以是随机的。</p>
+                <h3 id="NSClassFromString"><a href="#NSClassFromString" class="headerlink" title="NSClassFromString"></a>NSClassFromString</h3><a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">func NSClassFromString(_ aClassName: String) -&gt; AnyClass?</div><div class="line"></div><div class="line">Description</div><div class="line">	Obtains a class by name.</div><div class="line">	</div><div class="line">Parameters	</div><div class="line">	aClassName: The name of a class.</div><div class="line">	</div><div class="line">Returns	</div><div class="line">	The class object named by aClassName, or nil if no class by </div><div class="line">	that name is currently loaded. If aClassName is nil, returns nil.</div><div class="line">	</div><div class="line">Availability	</div><div class="line">	iOS (8.0 and later), macOS (10.10 and later),</div><div class="line">	 tvOS (9.0 and later), watchOS (2.0 and later)</div></pre></td></tr></table></figure>
+<p>从文档可以看出，这个 api 其实就是能够根据一个字符串获取该字符串对应的类的 class 对象，也就是说，这个 api 可以让我们通过提供一个类的类名（字符串），然后得到该字符串对应的类的实例。这在我们日常的开发中，在某些场景下，对我们简化代码是挺有用的一个东西。</p>
+<hr>
+<h3 id="举个栗子-amp-amp-Show-the-codes"><a href="#举个栗子-amp-amp-Show-the-codes" class="headerlink" title="举个栗子 &amp;&amp; Show the codes"></a>举个栗子 &amp;&amp; Show the codes</h3><p>每一个 ios app 中，基本都会有一个【设置页】，类似下图：</p>
+<div align="center"><br>    <img src="http://7xskiu.com1.z0.glb.clouddn.com/setting.PNG" width="250" height="400" align="center"><br></div>
+
+<p>基本上每点击一行，都会跳转到不同的 UIViewController 中，我们很自然的一个想法是在<br><strong>func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)</strong> 函数中进行一坨的 if 语句，但这样一点不优雅，现在我们利用上面的 api 改写下。</p>
+<ul>
+<li>将所有需要跳转的 UIViewController 配置在一个数组中 </li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">/*</div><div class="line"> * viewController 为要跳转的 UIViewController 的类的名称，</div><div class="line"> * constructMethod 表示的是该 UIViewController 的实现方式，code 表示</div><div class="line"> * 该 UIViewController 是代码实现的，BLLStoryBoard 表示该 UIViewController </div><div class="line"> * 是由 storyboard 实现的，并且 BLLStoryBoard 是 storyboard 的名称，</div><div class="line"> * 这样弄是因为不同方式，跳转的代码不同</div><div class="line"> */</div><div class="line"> </div><div class="line">let controllers = [[&quot;viewController&quot;: &quot;BLLSnapKitViewController&quot;, &quot;constructMethod&quot;: &quot;code&quot;],</div><div class="line">                       [&quot;viewController&quot;: &quot;BLLStoryBoardEntryViewController&quot;, &quot;constructMethod&quot;: &quot;BLLStoryBoard&quot;] ]</div></pre></td></tr></table></figure>
+<ul>
+<li>使用 NSClassFromString 进行跳转</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) &#123;</div><div class="line">     tableView.deselectRow(at: indexPath, animated: true)</div><div class="line">     </div><div class="line">     if let appName: String = Bundle.main.object(forInfoDictionaryKey: &quot;CFBundleName&quot;) as? String &#123;</div><div class="line">         </div><div class="line">         let configDic:[String: String] = controllers[indexPath.row]</div><div class="line">         let vcName = configDic[&quot;viewController&quot;]!</div><div class="line">         </div><div class="line">         //在 swift 下类名前面需要添加 bundle 名称</div><div class="line">         let classStringName: String = appName + &quot;.&quot; + vcName</div><div class="line">         </div><div class="line">         let construcMethod: String = configDic[&quot;constructMethod&quot;]!</div><div class="line">         </div><div class="line">         if construcMethod == &quot;code&quot; &#123;</div><div class="line">             if let toClass: UIViewController.Type = NSClassFromString(classStringName) as? UIViewController.Type &#123;</div><div class="line">                 let toController: UIViewController = toClass.init()</div><div class="line">                 self.navigationController?.pushViewController(toController, animated: true)</div><div class="line">             &#125;</div><div class="line">         &#125; else &#123;</div><div class="line">             let storyBoard = UIStoryboard(name: construcMethod, bundle: Bundle.main)</div><div class="line">             let vc: UIViewController = storyBoard.instantiateViewController(withIdentifier: vcName)</div><div class="line">              self.navigationController?.pushViewController(vc, animated: true)</div><div class="line">         &#125;</div><div class="line">     &#125;</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+<hr>
+<h3 id="致谢"><a href="#致谢" class="headerlink" title="致谢"></a>致谢</h3><p>感谢您的阅读，欢迎与您的沟通交流 ^_^</p>
 
 
                 <hr>
@@ -193,12 +204,12 @@
                 <!-- 多说 Share start -->
                 <div class="ds-share"
                     style="text-align: right"
-                    data-thread-key="2016/08/13/2016-06-05-multithread/"
-                    data-title="说说 iOS 的多线程"
-                    data-url="http://light-bo.github.io/2016/08/13/2016-06-05-multithread/"
-                    data-images="http://light-bo.github.io/2016/08/13/2016-06-05-multithread/github.jpg"
-                    data-content="
-说几句对于客户端程序来说，界面的操作是否流畅是衡量这个程序质量高低很重要的指标。对于 iOS... | light_bo&#39;s blog " >
+                    data-thread-key="2016/10/12/2016-10-12-swift-NSClassFromString/"
+                    data-title="当 Swift 遇上 NSClassFromString"
+                    data-url="http://light-bo.github.io/2016/10/12/2016-10-12-swift-NSClassFromString/"
+                    data-images=""
+                    data-content="NSClassFromString
+123456789101112131415func NSC... | light_bo&#39;s blog " >
                     <div class="ds-share-inline">
                       <ul  class="ds-share-icons-16">
                         <li data-toggle="ds-share-icons-more"><a class="ds-more" href="#">分享到：</a></li>
@@ -216,13 +227,9 @@
 
                 <ul class="pager">
                     
-                        <li class="previous">
-                            <a href="/2016/10/12/2016-10-12-swift-NSClassFromString/" data-toggle="tooltip" data-placement="top" title="当 Swift 遇上 NSClassFromString">&larr; Previous Post</a>
-                        </li>
-                    
                     
                         <li class="next">
-                            <a href="/2016/08/13/2016-04-18-nsarray-json-file/" data-toggle="tooltip" data-placement="top" title="读取 json 文件中的数据">Next Post &rarr;</a>
+                            <a href="/2016/08/13/2016-06-05-multithread/" data-toggle="tooltip" data-placement="top" title="说说 iOS 的多线程">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -231,9 +238,9 @@
                 <!-- 多说评论框 start -->
                 <div class="comment">
                     <div class="ds-thread"
-                        data-thread-key="2016/08/13/2016-06-05-multithread/"
-                        data-title="说说 iOS 的多线程"
-                        data-url="http://light-bo.github.io/2016/08/13/2016-06-05-multithread/" >
+                        data-thread-key="2016/10/12/2016-10-12-swift-NSClassFromString/"
+                        data-title="当 Swift 遇上 NSClassFromString"
+                        data-url="http://light-bo.github.io/2016/10/12/2016-10-12-swift-NSClassFromString/" >
                     </div>
                 </div>
                 <!-- 多说评论框 end -->
@@ -245,7 +252,7 @@
 
             <div class="hidden-xs col-sm-3 toc-col" >
                 <div class="toc-wrap">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#说几句"><span class="toc-text">说几句</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#几种方法"><span class="toc-text">几种方法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#NSThread"><span class="toc-text">NSThread</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NSOperation-NSOperationQueue"><span class="toc-text">NSOperation/NSOperationQueue</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GCD"><span class="toc-text">GCD</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#一些关键概念"><span class="toc-text">一些关键概念</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#串行队列"><span class="toc-text">串行队列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#并发队列"><span class="toc-text">并发队列</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#NSClassFromString"><span class="toc-text">NSClassFromString</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#举个栗子-amp-amp-Show-the-codes"><span class="toc-text">举个栗子 && Show the codes</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#致谢"><span class="toc-text">致谢</span></a></li></ol>
                 </div>
             </div>
         </div>
