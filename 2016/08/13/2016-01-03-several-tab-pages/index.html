@@ -7,16 +7,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Thinking &amp;&amp; Coding">
-    <meta name="keyword"  content="undefined">
+    <meta name="keyword" content="undefined">
     <meta name="theme-color" content="#600090">
     <meta name="msapplication-navbutton-color" content="#600090">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="#60090">
-    <link rel="shortcut icon" href="/img/coffee.png">
-
+    <meta name="apple-mobile-web-app-status-bar-style" content="#600090">
+    <link rel="shortcut icon" href="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-person-128.png">
+    <link rel="alternate" type="application/atom+xml" title="light_bo" href="/atom.xml">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
     <title>
         
-          iOS 多个 tab 页 demo｜light_bo&#39;s blog
+        iOS 多个 tab 页 demo｜light_bo&#39;s blog
         
     </title>
 
@@ -30,30 +32,16 @@
 
     <!-- Pygments Github CSS -->
     <link rel="stylesheet" href="/css/syntax.css">
-
-    <!-- Custom Fonts -->
-    <link href="http://cdn.staticfile.org/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-    <!-- ga & ba script hoook -->
-    <script></script>
 </head>
 
 <style>
 
-    header.intro-header{
+    header.intro-header {
         background-image: url('undefined')
     }
 </style>
 <!-- hack iOS CSS :active style -->
-<body ontouchstart="">
+<body ontouchstart="" class="animated fadeIn">
 <!-- Navigation -->
 <nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "true" data-istags="false
 " data-ishome = "false" >
@@ -66,7 +54,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">
+            <a class="navbar-brand animated pulse" href="/">
                 <span class="brand-logo">
                     light_bo
                 </span>
@@ -87,9 +75,10 @@
                     <li>
                         <a href="/">Home</a>
                     </li>
-
+					
                     
-
+					
+					
                 </ul>
             </div>
         </div>
@@ -100,7 +89,7 @@
     // Drop Bootstarp low-performance Navbar
     // Use customize navbar with high-quality material design animation
     // in high-perf jank-free CSS3 implementation
-    var $body   = document.body;
+//    var $body   = document.body;
     var $toggle = document.querySelector('.navbar-toggle');
     var $navbar = document.querySelector('#huxblog_navbar');
     var $collapse = document.querySelector('.navbar-collapse');
@@ -125,24 +114,25 @@
     }
 </script>
 
-    <!-- Main Content -->
-    
-<!-- Image to hack wechat -->
+<!-- Main Content -->
+
 <!--only post-->
 
-    
-        <img class="wechat-title-img" src="http://7xskiu.com1.z0.glb.clouddn.com/blog_header.jpg">
-    
+
+<img class="wechat-title-img"
+     src="http://7xskiu.com1.z0.glb.clouddn.com/blog_header.jpg">
+
 
 <style>
-
-    header.intro-header{
+    
+    header.intro-header {
         background-image: url('http://7xskiu.com1.z0.glb.clouddn.com/blog_header.jpg')
     }
 
+    
 </style>
 
-<header class="intro-header" >
+<header class="intro-header">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
@@ -151,13 +141,14 @@
                     
                     <span class="meta">
                          作者 light_bo
-                         <span>
+                        <span>
                           日期 2016-08-13
                          </span>
                     </span>
                     <div class="tags text-center">
                         
-                        <a class="tag" href="/tags/#iOS" title="iOS">iOS</a>
+                        <a class="tag" href="/tags/#iOS"
+                           title="iOS">iOS</a>
                         
                     </div>
                 </div>
@@ -175,51 +166,50 @@
 <article>
     <div class="container">
         <div class="row">
-                <!-- Post Container -->
+            <!-- Post Container -->
             <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
-
                 <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>在日常的开发中，App 中多个功能模块常常表现为多个 tab 页的形式，利用 tab 页，可以使得 App 的功能模块非常清晰，同时又非常有利于团队的协作开发。本文记录了这样一个 demo 的示例代码。</p>
 <a id="more"></a>
 <h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * the codes support iOS 7.0 and later iOS version.</div><div class="line"> *</div><div class="line"> */ </div><div class="line"></div><div class="line"></div><div class="line">- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions &#123;</div><div class="line">	self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];</div><div class="line"></div><div class="line">	UITabBarController *tabBarController = [[UITabBarController alloc] init];</div><div class="line"></div><div class="line">	UIImage *unselecteImage = [[UIImage imageNamed:@&quot;01&quot;] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];//采用图片的原始格式，系统不对图片进行处理</div><div class="line"></div><div class="line">	UIImage *selectedImage = [[UIImage imageNamed:@&quot;02&quot;] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];</div><div class="line"></div><div class="line">	ViewController *vc1 = [[ViewController alloc] init];</div><div class="line">	vc1.tabBarItem = [[UITabBarItem alloc] initWithTitle:@&quot;微信&quot; image:unselecteImage selectedImage:selectedImage];</div><div class="line">	//...</div><div class="line"></div><div class="line">	ViewControllerTwo *vc2 = [[ViewControllerTwo alloc] init];</div><div class="line">	vc2.title = @&quot;通讯录&quot;;</div><div class="line">	//设置选中和未选中的图片...</div><div class="line"></div><div class="line">	ViewControllerThree *vc3 = [[ViewControllerThree alloc] init];</div><div class="line">	vc3.title = @&quot;发现&quot;;</div><div class="line">	//...</div><div class="line"></div><div class="line">	ViewControllerFour *vc4 = [[ViewControllerFour alloc] init];</div><div class="line">	vc4.title = @&quot;我&quot;;</div><div class="line">	//...</div><div class="line"></div><div class="line">	NSArray *viewControllers = [NSArray arrayWithObjects:vc1, vc2, vc3, vc4, nil];</div><div class="line">	tabBarController.viewControllers = viewControllers;</div><div class="line"></div><div class="line">	UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:tabBarController];</div><div class="line"></div><div class="line"></div><div class="line">	self.window.rootViewController = nc;</div><div class="line">	[self.window setTintColor:[UIColor greenColor]];</div><div class="line"></div><div class="line"></div><div class="line">	[self.window makeKeyAndVisible];</div><div class="line"></div><div class="line">	return YES;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h1 id="demo-截图"><a href="#demo-截图" class="headerlink" title="demo 截图"></a>demo 截图</h1><p><img src="http://img.blog.csdn.net/20150913133805286" alt="这里写图片描述"></p>
 
-
                 <hr>
-
                 
                 <!-- 多说 Share start -->
                 <div class="ds-share"
-                    style="text-align: right"
-                    data-thread-key="2016/08/13/2016-01-03-several-tab-pages/"
-                    data-title="iOS 多个 tab 页 demo"
-                    data-url="http://light-bo.github.io/2016/08/13/2016-01-03-several-tab-pages/"
-                    data-images=""
-                    data-content="简介在日常的开发中，App 中多个功能模块常常表现为多个 tab 页的形式，利用 tab 页，... | light_bo&#39;s blog " >
+                     style="text-align: right"
+                     data-thread-key="2016/08/13/2016-01-03-several-tab-pages/"
+                     data-title="iOS 多个 tab 页 demo"
+                     data-url="http://light-bo.github.io/2016/08/13/2016-01-03-several-tab-pages/"
+                     data-images=""
+                     data-content="简介在日常的开发中，App 中多个功能模块常常表现为多个 tab 页的形式，利用 tab 页，... | light_bo&#39;s blog ">
                     <div class="ds-share-inline">
-                      <ul  class="ds-share-icons-16">
-                        <li data-toggle="ds-share-icons-more"><a class="ds-more" href="#">分享到：</a></li>
-                        <li><a class="ds-wechat flat" href="javascript:void(0);" data-service="wechat">微信</a></li>
-                        <li><a class="ds-weibo flat" href="javascript:void(0);" data-service="weibo">微博</a></li>
-                        <li><a class="ds-douban flat" href="javascript:void(0);" data-service="douban">豆瓣</a></li>
-                      </ul>
-                      <div class="ds-share-icons-more">
-                      </div>
+                        <ul class="ds-share-icons-16">
+                            <li data-toggle="ds-share-icons-more"><a class="ds-more" href="#">分享到：</a></li>
+                            <li><a class="ds-wechat flat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+                            <li><a class="ds-weibo flat" href="javascript:void(0);" data-service="weibo">微博</a></li>
+                            <li><a class="ds-douban flat" href="javascript:void(0);" data-service="douban">豆瓣</a></li>
+                        </ul>
+                        <div class="ds-share-icons-more">
+                        </div>
                     </div>
-                <hr>
+                    <hr>
                 </div>
                 <!-- 多说 Share end-->
                 
 
                 <ul class="pager">
                     
-                        <li class="previous">
-                            <a href="/2016/08/13/2016-04-07-oc-block/" data-toggle="tooltip" data-placement="top" title="OC 中的 block">&larr; Previous Post</a>
-                        </li>
+                    <li class="previous">
+                        <a href="/2016/08/13/2016-04-07-oc-block/" data-toggle="tooltip" data-placement="top"
+                           title="OC 中的 block">&larr; Previous Post</a>
+                    </li>
                     
                     
-                        <li class="next">
-                            <a href="/2016/08/13/2016-01-03-convert-timestamp-to-string/" data-toggle="tooltip" data-placement="top" title="iOS 将时间戳转换为可读字符串">Next Post &rarr;</a>
-                        </li>
+                    <li class="next">
+                        <a href="/2016/08/13/2016-01-03-convert-timestamp-to-string/" data-toggle="tooltip" data-placement="top"
+                           title="iOS 将时间戳转换为可读字符串">Next Post &rarr;</a>
+                    </li>
                     
                 </ul>
 
@@ -227,9 +217,9 @@
                 <!-- 多说评论框 start -->
                 <div class="comment">
                     <div class="ds-thread"
-                        data-thread-key="2016/08/13/2016-01-03-several-tab-pages/"
-                        data-title="iOS 多个 tab 页 demo"
-                        data-url="http://light-bo.github.io/2016/08/13/2016-01-03-several-tab-pages/" >
+                         data-thread-key="2016/08/13/2016-01-03-several-tab-pages/"
+                         data-title="iOS 多个 tab 页 demo"
+                         data-url="http://light-bo.github.io/2016/08/13/2016-01-03-several-tab-pages/">
                     </div>
                 </div>
                 <!-- 多说评论框 end -->
@@ -239,7 +229,7 @@
 
             </div>
 
-            <div class="hidden-xs col-sm-3 toc-col" >
+            <div class="hidden-xs col-sm-3 toc-col">
                 <div class="toc-wrap">
                     <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#简介"><span class="toc-text">简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#代码"><span class="toc-text">代码</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#demo-截图"><span class="toc-text">demo 截图</span></a></li></ol>
                 </div>
@@ -272,14 +262,15 @@
     var _user = 'light-bo';
 
     // duoshuo comment query.
-    var duoshuoQuery = {short_name: _user };
-    (function() {
+    var duoshuoQuery = {short_name: _user};
+    (function () {
         var ds = document.createElement('script');
-        ds.type = 'text/javascript';ds.async = true;
+        ds.type = 'text/javascript';
+        ds.async = true;
         ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
         ds.charset = 'UTF-8';
         (document.getElementsByTagName('head')[0]
-         || document.getElementsByTagName('body')[0]).appendChild(ds);
+        || document.getElementsByTagName('body')[0]).appendChild(ds);
     })();
 </script>
 <!-- 多说公共JS代码 end -->
@@ -288,15 +279,12 @@
 
 
 
-
-
-    <!-- Footer -->
-    <!-- Footer -->
+<!-- Footer -->
+<!-- Footer -->
 <footer>
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
-                <span class="text-muted"style="font-size: 14px">双击导航条返回顶部</span>
                 <br>
                 <ul class="list-inline text-center">
                 
@@ -334,7 +322,6 @@
 <!-- Custom Theme JavaScript -->
 <script src="/js/blog.js"></script>
 
-
 <!-- async load function -->
 <script>
     function async(u, c) {
@@ -363,7 +350,7 @@
 
 <!--fastClick.js -->
 <script>
-    async("http://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
         var $nav = document.querySelector("nav");
         if($nav) FastClick.attach($nav);
     })
@@ -400,8 +387,8 @@
 
 <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
-    <!--wechat title img-->
-    <img class="wechat-title-img" src="http://7xskiu.com1.z0.glb.clouddn.com/yjck.jpeg">
+<!--wechat title img-->
+<img class="wechat-title-img" src="http://7xskiu.com1.z0.glb.clouddn.com/yjck.jpeg">
 </body>
 
 </html>

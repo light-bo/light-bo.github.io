@@ -7,16 +7,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Thinking &amp;&amp; Coding">
-    <meta name="keyword"  content="undefined">
+    <meta name="keyword" content="undefined">
     <meta name="theme-color" content="#600090">
     <meta name="msapplication-navbutton-color" content="#600090">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="#60090">
-    <link rel="shortcut icon" href="/img/coffee.png">
-
+    <meta name="apple-mobile-web-app-status-bar-style" content="#600090">
+    <link rel="shortcut icon" href="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-person-128.png">
+    <link rel="alternate" type="application/atom+xml" title="light_bo" href="/atom.xml">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
     <title>
         
-          OC 中的 block｜light_bo&#39;s blog
+        OC 中的 block｜light_bo&#39;s blog
         
     </title>
 
@@ -30,30 +32,16 @@
 
     <!-- Pygments Github CSS -->
     <link rel="stylesheet" href="/css/syntax.css">
-
-    <!-- Custom Fonts -->
-    <link href="http://cdn.staticfile.org/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-    <!-- ga & ba script hoook -->
-    <script></script>
 </head>
 
 <style>
 
-    header.intro-header{
+    header.intro-header {
         background-image: url('undefined')
     }
 </style>
 <!-- hack iOS CSS :active style -->
-<body ontouchstart="">
+<body ontouchstart="" class="animated fadeIn">
 <!-- Navigation -->
 <nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "true" data-istags="false
 " data-ishome = "false" >
@@ -66,7 +54,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">
+            <a class="navbar-brand animated pulse" href="/">
                 <span class="brand-logo">
                     light_bo
                 </span>
@@ -87,9 +75,10 @@
                     <li>
                         <a href="/">Home</a>
                     </li>
-
+					
                     
-
+					
+					
                 </ul>
             </div>
         </div>
@@ -100,7 +89,7 @@
     // Drop Bootstarp low-performance Navbar
     // Use customize navbar with high-quality material design animation
     // in high-perf jank-free CSS3 implementation
-    var $body   = document.body;
+//    var $body   = document.body;
     var $toggle = document.querySelector('.navbar-toggle');
     var $navbar = document.querySelector('#huxblog_navbar');
     var $collapse = document.querySelector('.navbar-collapse');
@@ -125,24 +114,25 @@
     }
 </script>
 
-    <!-- Main Content -->
-    
-<!-- Image to hack wechat -->
+<!-- Main Content -->
+
 <!--only post-->
 
-    
-        <img class="wechat-title-img" src="http://7xskiu.com1.z0.glb.clouddn.com/blog_header.jpg">
-    
+
+<img class="wechat-title-img"
+     src="http://7xskiu.com1.z0.glb.clouddn.com/blog_header.jpg">
+
 
 <style>
-
-    header.intro-header{
+    
+    header.intro-header {
         background-image: url('http://7xskiu.com1.z0.glb.clouddn.com/blog_header.jpg')
     }
 
+    
 </style>
 
-<header class="intro-header" >
+<header class="intro-header">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
@@ -151,13 +141,14 @@
                     
                     <span class="meta">
                          作者 light_bo
-                         <span>
+                        <span>
                           日期 2016-08-13
                          </span>
                     </span>
                     <div class="tags text-center">
                         
-                        <a class="tag" href="/tags/#iOS" title="iOS">iOS</a>
+                        <a class="tag" href="/tags/#iOS"
+                           title="iOS">iOS</a>
                         
                     </div>
                 </div>
@@ -175,9 +166,8 @@
 <article>
     <div class="container">
         <div class="row">
-                <!-- Post Container -->
+            <!-- Post Container -->
             <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
-
                 <h1 id="何为-block"><a href="#何为-block" class="headerlink" title="何为 block"></a>何为 block</h1><p>block 在 OC 语言中，被视为是一种类型，在 iOS 4.0 之后被引入到 OC 中，理解 block 可以与 C 语言中的函数指针进行类比，这样有利于了解 block 相关的特性和本质。block 类似于函数指针，又不同于函数指针。</p>
 <a id="more"></a>
 <h1 id="block-VS-函数指针"><a href="#block-VS-函数指针" class="headerlink" title="block VS 函数指针"></a>block VS 函数指针</h1><p>block 相对于函数指针来说，还是有很多的区别的，主要表现为：</p>
@@ -195,43 +185,43 @@
 <li>注意避免循环引用；block 默认会保有其作用域内变量的强引用，当一个类声明一个 block 属性时，就需要注意避免在 block 中直接使用 self 了，这时需要声明一个 self 的弱引用<code>__weak tydeof(self) weakSelf = self</code>，然后在 block 中使用 <code>weakSelf</code>来访问类中的相关成员。</li>
 </ul>
 
-
                 <hr>
-
                 
                 <!-- 多说 Share start -->
                 <div class="ds-share"
-                    style="text-align: right"
-                    data-thread-key="2016/08/13/2016-04-07-oc-block/"
-                    data-title="OC 中的 block"
-                    data-url="http://light-bo.github.io/2016/08/13/2016-04-07-oc-block/"
-                    data-images=""
-                    data-content="何为 blockblock 在 OC 语言中，被视为是一种类型，在 iOS 4.0 之后被引入... | light_bo&#39;s blog " >
+                     style="text-align: right"
+                     data-thread-key="2016/08/13/2016-04-07-oc-block/"
+                     data-title="OC 中的 block"
+                     data-url="http://light-bo.github.io/2016/08/13/2016-04-07-oc-block/"
+                     data-images=""
+                     data-content="何为 blockblock 在 OC 语言中，被视为是一种类型，在 iOS 4.0 之后被引入... | light_bo&#39;s blog ">
                     <div class="ds-share-inline">
-                      <ul  class="ds-share-icons-16">
-                        <li data-toggle="ds-share-icons-more"><a class="ds-more" href="#">分享到：</a></li>
-                        <li><a class="ds-wechat flat" href="javascript:void(0);" data-service="wechat">微信</a></li>
-                        <li><a class="ds-weibo flat" href="javascript:void(0);" data-service="weibo">微博</a></li>
-                        <li><a class="ds-douban flat" href="javascript:void(0);" data-service="douban">豆瓣</a></li>
-                      </ul>
-                      <div class="ds-share-icons-more">
-                      </div>
+                        <ul class="ds-share-icons-16">
+                            <li data-toggle="ds-share-icons-more"><a class="ds-more" href="#">分享到：</a></li>
+                            <li><a class="ds-wechat flat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+                            <li><a class="ds-weibo flat" href="javascript:void(0);" data-service="weibo">微博</a></li>
+                            <li><a class="ds-douban flat" href="javascript:void(0);" data-service="douban">豆瓣</a></li>
+                        </ul>
+                        <div class="ds-share-icons-more">
+                        </div>
                     </div>
-                <hr>
+                    <hr>
                 </div>
                 <!-- 多说 Share end-->
                 
 
                 <ul class="pager">
                     
-                        <li class="previous">
-                            <a href="/2016/08/13/2016-04-10-uitextview-placeholder/" data-toggle="tooltip" data-placement="top" title="让 UITextView 带上 placeholder">&larr; Previous Post</a>
-                        </li>
+                    <li class="previous">
+                        <a href="/2016/08/13/2016-04-10-uitextview-placeholder/" data-toggle="tooltip" data-placement="top"
+                           title="让 UITextView 带上 placeholder">&larr; Previous Post</a>
+                    </li>
                     
                     
-                        <li class="next">
-                            <a href="/2016/08/13/2016-01-03-several-tab-pages/" data-toggle="tooltip" data-placement="top" title="iOS 多个 tab 页 demo">Next Post &rarr;</a>
-                        </li>
+                    <li class="next">
+                        <a href="/2016/08/13/2016-01-03-several-tab-pages/" data-toggle="tooltip" data-placement="top"
+                           title="iOS 多个 tab 页 demo">Next Post &rarr;</a>
+                    </li>
                     
                 </ul>
 
@@ -239,9 +229,9 @@
                 <!-- 多说评论框 start -->
                 <div class="comment">
                     <div class="ds-thread"
-                        data-thread-key="2016/08/13/2016-04-07-oc-block/"
-                        data-title="OC 中的 block"
-                        data-url="http://light-bo.github.io/2016/08/13/2016-04-07-oc-block/" >
+                         data-thread-key="2016/08/13/2016-04-07-oc-block/"
+                         data-title="OC 中的 block"
+                         data-url="http://light-bo.github.io/2016/08/13/2016-04-07-oc-block/">
                     </div>
                 </div>
                 <!-- 多说评论框 end -->
@@ -251,7 +241,7 @@
 
             </div>
 
-            <div class="hidden-xs col-sm-3 toc-col" >
+            <div class="hidden-xs col-sm-3 toc-col">
                 <div class="toc-wrap">
                     <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#何为-block"><span class="toc-text">何为 block</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#block-VS-函数指针"><span class="toc-text">block VS 函数指针</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用-block-时注意事项"><span class="toc-text">使用 block 时注意事项</span></a></li></ol>
                 </div>
@@ -284,14 +274,15 @@
     var _user = 'light-bo';
 
     // duoshuo comment query.
-    var duoshuoQuery = {short_name: _user };
-    (function() {
+    var duoshuoQuery = {short_name: _user};
+    (function () {
         var ds = document.createElement('script');
-        ds.type = 'text/javascript';ds.async = true;
+        ds.type = 'text/javascript';
+        ds.async = true;
         ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
         ds.charset = 'UTF-8';
         (document.getElementsByTagName('head')[0]
-         || document.getElementsByTagName('body')[0]).appendChild(ds);
+        || document.getElementsByTagName('body')[0]).appendChild(ds);
     })();
 </script>
 <!-- 多说公共JS代码 end -->
@@ -300,15 +291,12 @@
 
 
 
-
-
-    <!-- Footer -->
-    <!-- Footer -->
+<!-- Footer -->
+<!-- Footer -->
 <footer>
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
-                <span class="text-muted"style="font-size: 14px">双击导航条返回顶部</span>
                 <br>
                 <ul class="list-inline text-center">
                 
@@ -346,7 +334,6 @@
 <!-- Custom Theme JavaScript -->
 <script src="/js/blog.js"></script>
 
-
 <!-- async load function -->
 <script>
     function async(u, c) {
@@ -375,7 +362,7 @@
 
 <!--fastClick.js -->
 <script>
-    async("http://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
         var $nav = document.querySelector("nav");
         if($nav) FastClick.attach($nav);
     })
@@ -412,8 +399,8 @@
 
 <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
-    <!--wechat title img-->
-    <img class="wechat-title-img" src="http://7xskiu.com1.z0.glb.clouddn.com/yjck.jpeg">
+<!--wechat title img-->
+<img class="wechat-title-img" src="http://7xskiu.com1.z0.glb.clouddn.com/yjck.jpeg">
 </body>
 
 </html>
