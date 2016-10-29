@@ -18,11 +18,11 @@
     <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
     <title>
         
-        当 Swift 遇上 NSClassFromString｜light_bo&#39;s blog
+        反转二叉树｜light_bo&#39;s blog
         
     </title>
 
-    <link rel="canonical" href="http://light-bo.github.io/2016/10/12/2016-10-12-swift-NSClassFromString/">
+    <link rel="canonical" href="http://light-bo.github.io/2016/10/29/2016-10-29-reverse-binary-tree/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -126,7 +126,7 @@
 <style>
     
     header.intro-header {
-        background-image: url('http://7xskiu.com1.z0.glb.clouddn.com/blog_header.jpg')
+        background-image: url('http://7xskiu.com1.z0.glb.clouddn.com/blog_header.jpgundefined')
     }
 
     
@@ -137,18 +137,18 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
                 <div class="post-heading">
-                    <h1>当 Swift 遇上 NSClassFromString</h1>
+                    <h1>反转二叉树</h1>
                     
                     <span class="meta">
                          作者 light_bo
                         <span>
-                          日期 2016-10-12
+                          日期 2016-10-29
                          </span>
                     </span>
                     <div class="tags text-center">
                         
-                        <a class="tag" href="/tags/#Swift"
-                           title="Swift">Swift</a>
+                        <a class="tag" href="/tags/#Algorithm"
+                           title="Algorithm">Algorithm</a>
                         
                     </div>
                 </div>
@@ -157,7 +157,7 @@
     </div>
     <div class="post-title-haojen">
         <span>
-            当 Swift 遇上 NSClassFromString
+            反转二叉树
         </span>
     </div>
 </header>
@@ -168,36 +168,41 @@
         <div class="row">
             <!-- Post Container -->
             <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
-                <h3 id="NSClassFromString"><a href="#NSClassFromString" class="headerlink" title="NSClassFromString"></a>NSClassFromString</h3><a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">func NSClassFromString(_ aClassName: String) -&gt; AnyClass?</div><div class="line"></div><div class="line">Description</div><div class="line">	Obtains a class by name.</div><div class="line">	</div><div class="line">Parameters	</div><div class="line">	aClassName: The name of a class.</div><div class="line">	</div><div class="line">Returns	</div><div class="line">	The class object named by aClassName, or nil if no class by </div><div class="line">	that name is currently loaded. If aClassName is nil, returns nil.</div><div class="line">	</div><div class="line">Availability	</div><div class="line">	iOS (8.0 and later), macOS (10.10 and later),</div><div class="line">	 tvOS (9.0 and later), watchOS (2.0 and later)</div></pre></td></tr></table></figure>
-<p>从文档可以看出，这个 api 其实就是能够根据一个字符串获取该字符串对应的类的 class 对象，也就是说，这个 api 可以让我们通过提供一个类的类名（字符串），然后得到该字符串对应的类的实例。这在我们日常的开发中，在某些场景下，对我们简化代码是挺有用的一个东西。</p>
-<hr>
-<h3 id="举个栗子-amp-amp-Show-the-codes"><a href="#举个栗子-amp-amp-Show-the-codes" class="headerlink" title="举个栗子 &amp;&amp; Show the codes"></a>举个栗子 &amp;&amp; Show the codes</h3><p>每一个 ios app 中，基本都会有一个【设置页】，类似下图：</p>
-<div align="center"><br>    <img src="http://7xskiu.com1.z0.glb.clouddn.com/setting.PNG" width="250" height="400" align="center"><br></div>
+                <h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a><strong>问题描述</strong></h3><p>为了更加直观地描述翻转二叉树的问题，我们直接使用下图对问题进行描述：</p>
+<div align="center"><br>    <img src="http://7xskiu.com1.z0.glb.clouddn.com/binaryTreeReverse" align="center"><br></div>
 
-<p>基本上每点击一行，都会跳转到不同的 UIViewController 中，我们很自然的一个想法是在<br><strong>func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)</strong> 函数中进行一坨的 if 语句，但这样一点不优雅，现在我们利用上面的 api 改写下。</p>
-<ul>
-<li>将所有需要跳转的 UIViewController 配置在一个数组中 </li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">/*</div><div class="line"> * viewController 为要跳转的 UIViewController 的类的名称，</div><div class="line"> * constructMethod 表示的是该 UIViewController 的实现方式，code 表示</div><div class="line"> * 该 UIViewController 是代码实现的，BLLStoryBoard 表示该 UIViewController </div><div class="line"> * 是由 storyboard 实现的，并且 BLLStoryBoard 是 storyboard 的名称，</div><div class="line"> * 这样弄是因为不同方式，跳转的代码不同</div><div class="line"> */</div><div class="line"> </div><div class="line">let controllers = [[&quot;viewController&quot;: &quot;BLLSnapKitViewController&quot;, &quot;constructMethod&quot;: &quot;code&quot;],</div><div class="line">                       [&quot;viewController&quot;: &quot;BLLStoryBoardEntryViewController&quot;, &quot;constructMethod&quot;: &quot;BLLStoryBoard&quot;] ]</div></pre></td></tr></table></figure>
-<ul>
-<li>使用 NSClassFromString 进行跳转</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) &#123;</div><div class="line">     tableView.deselectRow(at: indexPath, animated: true)</div><div class="line">     </div><div class="line">     if let appName: String = Bundle.main.object(forInfoDictionaryKey: &quot;CFBundleName&quot;) as? String &#123;</div><div class="line">         </div><div class="line">         let configDic:[String: String] = controllers[indexPath.row]</div><div class="line">         let vcName = configDic[&quot;viewController&quot;]!</div><div class="line">         </div><div class="line">         //在 swift 下类名前面需要添加 bundle 名称</div><div class="line">         let classStringName: String = appName + &quot;.&quot; + vcName</div><div class="line">         </div><div class="line">         let construcMethod: String = configDic[&quot;constructMethod&quot;]!</div><div class="line">         </div><div class="line">         if construcMethod == &quot;code&quot; &#123;</div><div class="line">             if let toClass: UIViewController.Type = NSClassFromString(classStringName) as? UIViewController.Type &#123;</div><div class="line">                 let toController: UIViewController = toClass.init()</div><div class="line">                 self.navigationController?.pushViewController(toController, animated: true)</div><div class="line">             &#125;</div><div class="line">         &#125; else &#123;</div><div class="line">             let storyBoard = UIStoryboard(name: construcMethod, bundle: Bundle.main)</div><div class="line">             let vc: UIViewController = storyBoard.instantiateViewController(withIdentifier: vcName)</div><div class="line">              self.navigationController?.pushViewController(vc, animated: true)</div><div class="line">         &#125;</div><div class="line">     &#125;</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+<p>从图中我们可以看出，二叉树翻转后的结果就如同原来二叉树在镜子里的 “像” 一样，这就是这个问题所要达到的效果。</p>
 <hr>
-<h3 id="致谢"><a href="#致谢" class="headerlink" title="致谢"></a>致谢</h3><p>感谢您的阅读，欢迎与您的沟通交流 ^_^</p>
+<h3 id="算法原理"><a href="#算法原理" class="headerlink" title="算法原理"></a><strong>算法原理</strong></h3><p> 在数据结构中，对于树这种结构，我们经常采用的策略是使用递归的方式，在这里，我们也使用递归来解决这个问题。</p>
+<p>递归算法步骤：  </p>
+<pre><code>1. 对二叉树的左子树进行翻转   
+2. 对二叉树的右子树进行翻转  
+3. 将左右子树的根节点进行交换（不用考虑原二叉树的根节点，因为原二叉树的根节点在翻转前后没有改变）
+</code></pre><hr>
+<h3 id="Show-the-codes-C"><a href="#Show-the-codes-C" class="headerlink" title="Show the codes (C)"></a><strong>Show the codes (C)</strong></h3><ul>
+<li>树节点定义</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">struct BinaryTreeNode &#123;</div><div class="line">	char val;</div><div class="line">	BinaryTreeNode *lchild;</div><div class="line">	BinaryTreeNode *rchild;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">typedef BinaryTreeNode *BinaryTree;</div></pre></td></tr></table></figure>
+<ul>
+<li>递归代码</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">BinaryTree InvertBinaryTree(BinaryTree &amp;tree) &#123;</div><div class="line">	if(NULL == tree) return NULL;</div><div class="line">	</div><div class="line">	tree-&gt;lchild = InvertBinaryTree(tree-&gt;lchild);</div><div class="line">	tree-&gt;rchild = InvertBinaryTree(tree-&gt;rchild);</div><div class="line">	</div><div class="line">	BinaryTree *tempTree = tree-&gt;lchild;</div><div class="line">	tree-&gt;lchild = tree-&gt;rchild;</div><div class="line">	tree-&gt;rchild = tempTree;</div><div class="line">	</div><div class="line">	return tree;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<h3 id="致谢"><a href="#致谢" class="headerlink" title="致谢"></a><strong>致谢</strong></h3><p>谢谢您的阅读，有何意见和建议，欢迎交流！^_^</p>
 
                 <hr>
                 
                 <!-- 多说 Share start -->
                 <div class="ds-share"
                      style="text-align: right"
-                     data-thread-key="2016/10/12/2016-10-12-swift-NSClassFromString/"
-                     data-title="当 Swift 遇上 NSClassFromString"
-                     data-url="http://light-bo.github.io/2016/10/12/2016-10-12-swift-NSClassFromString/"
-                     data-images=""
-                     data-content="NSClassFromString
-123456789101112131415func NSC... | light_bo&#39;s blog ">
+                     data-thread-key="2016/10/29/2016-10-29-reverse-binary-tree/"
+                     data-title="反转二叉树"
+                     data-url="http://light-bo.github.io/2016/10/29/2016-10-29-reverse-binary-tree/"
+                     data-images="http://light-bo.github.io/2016/10/29/2016-10-29-reverse-binary-tree/blog_header.jpg"
+                     data-content="问题描述为了更加直观地描述翻转二叉树的问题，我们直接使用下图对问题进行描述：
+    
+
+从图... | light_bo&#39;s blog ">
                     <div class="ds-share-inline">
                         <ul class="ds-share-icons-16">
                             <li data-toggle="ds-share-icons-more"><a class="ds-more" href="#">分享到：</a></li>
@@ -215,15 +220,10 @@
 
                 <ul class="pager">
                     
-                    <li class="previous">
-                        <a href="/2016/10/29/2016-10-29-reverse-binary-tree/" data-toggle="tooltip" data-placement="top"
-                           title="反转二叉树">&larr; Previous Post</a>
-                    </li>
-                    
                     
                     <li class="next">
-                        <a href="/2016/08/13/2016-06-05-multithread/" data-toggle="tooltip" data-placement="top"
-                           title="说说 iOS 的多线程">Next Post &rarr;</a>
+                        <a href="/2016/10/12/2016-10-12-swift-NSClassFromString/" data-toggle="tooltip" data-placement="top"
+                           title="当 Swift 遇上 NSClassFromString">Next Post &rarr;</a>
                     </li>
                     
                 </ul>
@@ -232,9 +232,9 @@
                 <!-- 多说评论框 start -->
                 <div class="comment">
                     <div class="ds-thread"
-                         data-thread-key="2016/10/12/2016-10-12-swift-NSClassFromString/"
-                         data-title="当 Swift 遇上 NSClassFromString"
-                         data-url="http://light-bo.github.io/2016/10/12/2016-10-12-swift-NSClassFromString/">
+                         data-thread-key="2016/10/29/2016-10-29-reverse-binary-tree/"
+                         data-title="反转二叉树"
+                         data-url="http://light-bo.github.io/2016/10/29/2016-10-29-reverse-binary-tree/">
                     </div>
                 </div>
                 <!-- 多说评论框 end -->
@@ -246,7 +246,7 @@
 
             <div class="hidden-xs col-sm-3 toc-col">
                 <div class="toc-wrap">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#NSClassFromString"><span class="toc-text">NSClassFromString</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#举个栗子-amp-amp-Show-the-codes"><span class="toc-text">举个栗子 && Show the codes</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#致谢"><span class="toc-text">致谢</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#问题描述"><span class="toc-text">问题描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#算法原理"><span class="toc-text">算法原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Show-the-codes-C"><span class="toc-text">Show the codes (C)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#致谢"><span class="toc-text">致谢</span></a></li></ol>
                 </div>
             </div>
         </div>
