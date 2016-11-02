@@ -18,11 +18,11 @@
     <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
     <title>
         
-        反转二叉树｜light_bo&#39;s blog
+        编码过程的 &quot;二八原则&quot;｜light_bo&#39;s blog
         
     </title>
 
-    <link rel="canonical" href="http://light-bo.github.io/2016/10/29/2016-10-29-reverse-binary-tree/">
+    <link rel="canonical" href="http://light-bo.github.io/2016/11/02/2016-11-02-two-eight-pricipal/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -126,7 +126,7 @@
 <style>
     
     header.intro-header {
-        background-image: url('http://7xskiu.com1.z0.glb.clouddn.com/blog_header.jpg')
+        background-image: url('http://7xskiu.com1.z0.glb.clouddn.com/blog_header.jpgundefined')
     }
 
     
@@ -137,18 +137,18 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
                 <div class="post-heading">
-                    <h1>反转二叉树</h1>
+                    <h1>编码过程的 &quot;二八原则&quot;</h1>
                     
                     <span class="meta">
                          作者 light_bo
                         <span>
-                          日期 2016-10-29
+                          日期 2016-11-02
                          </span>
                     </span>
                     <div class="tags text-center">
                         
-                        <a class="tag" href="/tags/#Algorithm"
-                           title="Algorithm">Algorithm</a>
+                        <a class="tag" href="/tags/#coding 心得"
+                           title="coding 心得">coding 心得</a>
                         
                     </div>
                 </div>
@@ -157,7 +157,7 @@
     </div>
     <div class="post-title-haojen">
         <span>
-            反转二叉树
+            编码过程的 "二八原则"
         </span>
     </div>
 </header>
@@ -168,41 +168,19 @@
         <div class="row">
             <!-- Post Container -->
             <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
-                <h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a><strong>问题描述</strong></h3><p>为了更加直观地描述翻转二叉树的问题，我们直接使用下图对问题进行描述：</p>
-<div align="center"><br>    <img src="http://7xskiu.com1.z0.glb.clouddn.com/binaryTreeReverse" align="center"><br></div>
-
-<p>从图中我们可以看出，二叉树翻转后的结果就如同原来二叉树在镜子里的 “像” 一样，这就是这个问题所要达到的效果。</p>
-<hr>
-<h3 id="算法原理"><a href="#算法原理" class="headerlink" title="算法原理"></a><strong>算法原理</strong></h3><p> 在数据结构中，对于树这种结构，我们经常采用的策略是使用递归的方式，在这里，我们也使用递归来解决这个问题。</p>
-<p>递归算法步骤：  </p>
-<pre><code>1. 对二叉树的左子树进行翻转   
-2. 对二叉树的右子树进行翻转  
-3. 将左右子树的根节点进行交换（不用考虑原二叉树的根节点，因为原二叉树的根节点在翻转前后没有改变）
-</code></pre><hr>
-<h3 id="Show-the-codes-C"><a href="#Show-the-codes-C" class="headerlink" title="Show the codes (C)"></a><strong>Show the codes (C)</strong></h3><ul>
-<li>树节点定义</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">struct BinaryTreeNode &#123;</div><div class="line">	char val;</div><div class="line">	BinaryTreeNode *lchild;</div><div class="line">	BinaryTreeNode *rchild;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">typedef BinaryTreeNode *BinaryTree;</div></pre></td></tr></table></figure>
-<ul>
-<li>递归代码</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">BinaryTree InvertBinaryTree(BinaryTree &amp;tree) &#123;</div><div class="line">	if(NULL == tree) return NULL;</div><div class="line">	</div><div class="line">	tree-&gt;lchild = InvertBinaryTree(tree-&gt;lchild);</div><div class="line">	tree-&gt;rchild = InvertBinaryTree(tree-&gt;rchild);</div><div class="line">	</div><div class="line">	BinaryTree *tempTree = tree-&gt;lchild;</div><div class="line">	tree-&gt;lchild = tree-&gt;rchild;</div><div class="line">	tree-&gt;rchild = tempTree;</div><div class="line">	</div><div class="line">	return tree;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<hr>
-<h3 id="致谢"><a href="#致谢" class="headerlink" title="致谢"></a><strong>致谢</strong></h3><p>谢谢您的阅读，有何意见和建议，欢迎交流！^_^</p>
+                <h3 id="想好了再-coding"><a href="#想好了再-coding" class="headerlink" title="想好了再 coding"></a>想好了再 coding</h3><p> 在编码的过程中，面对一个问题，一定不要有一上来就编码的习惯，这是一个坏习惯，这样编出来的代码一定没有什么质量，漏洞百出，无论是可读性，重用性都极其糟糕，可以说这样做，你会后悔的。对于这个问题，我认为面对一个问题，对这样问题分析和设计应该占据 80% 的时间，只留下 20% 的时间进行 coding，这样写出来的代码才有质量可言，代码的思路才会更加清晰。<br>    把时间放在对问题的分析与设计上，这样在编码的时候就只是一些细节问题了,这样才是真正的 “节省时间”。</p>
+<h3 id="多说几句"><a href="#多说几句" class="headerlink" title="多说几句"></a>多说几句</h3><p>其实，以上所说的是一种 <strong>“自顶向下”</strong>（ <em>from  top to bottom</em> ）的方法，一个问题上来，首先要搭建解决问题的整体的框架，紧接着就是将这个框架分解为几个具体的模块，最后才是对各个具体的模块进行具体的实现（coding）。反之，如果采用 <strong>“自底向上”</strong> 的方法会有什么问题呢？采用 “自底向上” 的方法可能会使自己过于关心技术的细节而导致对问题的分析与理解不够准确，最后 “走火入魔”。</p>
 
                 <hr>
                 
                 <!-- 多说 Share start -->
                 <div class="ds-share"
                      style="text-align: right"
-                     data-thread-key="2016/10/29/2016-10-29-reverse-binary-tree/"
-                     data-title="反转二叉树"
-                     data-url="http://light-bo.github.io/2016/10/29/2016-10-29-reverse-binary-tree/"
-                     data-images=""
-                     data-content="问题描述为了更加直观地描述翻转二叉树的问题，我们直接使用下图对问题进行描述：
-    
-
-从图... | light_bo&#39;s blog ">
+                     data-thread-key="2016/11/02/2016-11-02-two-eight-pricipal/"
+                     data-title="编码过程的 &quot;二八原则&quot;"
+                     data-url="http://light-bo.github.io/2016/11/02/2016-11-02-two-eight-pricipal/"
+                     data-images="http://light-bo.github.io/2016/11/02/2016-11-02-two-eight-pricipal/blog_header.jpg"
+                     data-content="想好了再 coding 在编码的过程中，面对一个问题，一定不要有一上来就编码的习惯，这是一个坏... | light_bo&#39;s blog ">
                     <div class="ds-share-inline">
                         <ul class="ds-share-icons-16">
                             <li data-toggle="ds-share-icons-more"><a class="ds-more" href="#">分享到：</a></li>
@@ -220,15 +198,10 @@
 
                 <ul class="pager">
                     
-                    <li class="previous">
-                        <a href="/2016/11/02/2016-11-02-two-eight-pricipal/" data-toggle="tooltip" data-placement="top"
-                           title="编码过程的 "二八原则"">&larr; Previous Post</a>
-                    </li>
-                    
                     
                     <li class="next">
-                        <a href="/2016/10/12/2016-10-12-swift-NSClassFromString/" data-toggle="tooltip" data-placement="top"
-                           title="当 Swift 遇上 NSClassFromString">Next Post &rarr;</a>
+                        <a href="/2016/10/29/2016-10-29-reverse-binary-tree/" data-toggle="tooltip" data-placement="top"
+                           title="反转二叉树">Next Post &rarr;</a>
                     </li>
                     
                 </ul>
@@ -237,9 +210,9 @@
                 <!-- 多说评论框 start -->
                 <div class="comment">
                     <div class="ds-thread"
-                         data-thread-key="2016/10/29/2016-10-29-reverse-binary-tree/"
-                         data-title="反转二叉树"
-                         data-url="http://light-bo.github.io/2016/10/29/2016-10-29-reverse-binary-tree/">
+                         data-thread-key="2016/11/02/2016-11-02-two-eight-pricipal/"
+                         data-title="编码过程的 &quot;二八原则&quot;"
+                         data-url="http://light-bo.github.io/2016/11/02/2016-11-02-two-eight-pricipal/">
                     </div>
                 </div>
                 <!-- 多说评论框 end -->
@@ -251,7 +224,7 @@
 
             <div class="hidden-xs col-sm-3 toc-col">
                 <div class="toc-wrap">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#问题描述"><span class="toc-text">问题描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#算法原理"><span class="toc-text">算法原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Show-the-codes-C"><span class="toc-text">Show the codes (C)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#致谢"><span class="toc-text">致谢</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#想好了再-coding"><span class="toc-text">想好了再 coding</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多说几句"><span class="toc-text">多说几句</span></a></li></ol>
                 </div>
             </div>
         </div>
