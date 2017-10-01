@@ -46,9 +46,9 @@ hr{
 .sidebar-container .short-about img {
     width: 100%;
     display: block;
-    border-radius: 50%;
+    border-radius: 0%;
     margin-bottom: 20px;
-    box-shadow: 0 0 2px black;
+    box-shadow: 0 0 0px white;
 }
 
 .sidebar-container .short-about p {
@@ -883,11 +883,11 @@ img::-moz-selection {
     .one-tag-list .post-preview .post-meta {
         font-size: 18px;
     }
-	
+
 	.one-archive-list .post-preview {
 		margin-left: 40px;
 	}
-	
+
 	.archive-month {
 		margin-left: 20px;
 	}
@@ -1211,5 +1211,3 @@ img::-moz-selection {
     height:0;
     width:0;
 }
-
-
