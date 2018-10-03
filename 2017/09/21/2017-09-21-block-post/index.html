@@ -120,13 +120,13 @@
 
 
 <img class="wechat-title-img"
-     src="http://7xskiu.com1.z0.glb.clouddn.com/blog_header.jpg">
+     src="/images/global/blog-header.jpeg">
 
 
 <style>
     
     header.intro-header {
-        background-image: url('http://7xskiu.com1.z0.glb.clouddn.com/blog_header.jpgundefined')
+        background-image: url('/images/global/blog-header.jpegundefined')
     }
 
     
@@ -175,7 +175,7 @@
 <p>在 <strong>OC</strong> 中，<strong>block</strong> 在内存的管理中是被当成栈对象来管理的，这意味着如果你想要自己管理 <strong>block</strong> 的生命周期的话，必须将 <strong>block</strong> <strong>copy</strong> 到堆上来管理，所以很明显，对于 <strong>block</strong> 我们应该使用 <strong>copy</strong> 来修饰。</p>
 <p>其实，再思考一下，像这样的管理， <strong>OC</strong> 在语言层面上完全可以帮我们做这件事，防止我们犯错误，于是，去详细看了一下官方文档，就有了下面的解释。</p>
 <h1 id="官方文档"><a href="#官方文档" class="headerlink" title="官方文档"></a>官方文档</h1><p><a href="https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/WorkingwithBlocks/WorkingwithBlocks.html#//apple_ref/doc/uid/TP40011210-CH8-SW1" target="_blank" rel="external">官方文档</a> 中对这个问题是这样描述的：   </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">You should specify copy as the property attribute, because a </div><div class="line">block needs to be copied to keep track of its captured state outside </div><div class="line">of the original scope. This isn’t something you need to worry about</div><div class="line"> when using Automatic Reference Counting, as it will happen</div><div class="line"> automatically, but it’s best practice for the property attribute to </div><div class="line"> show the resultant behavior.</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">You should specify copy as the property attribute, because a</div><div class="line">block needs to be copied to keep track of its captured state outside</div><div class="line">of the original scope. This isn’t something you need to worry about</div><div class="line"> when using Automatic Reference Counting, as it will happen</div><div class="line"> automatically, but it’s best practice for the property attribute to</div><div class="line"> show the resultant behavior.</div></pre></td></tr></table></figure>
 <p>意思就是说如果你是使用 <strong>ARC</strong> 编写代码的话，使用 <strong>strong</strong> 去修饰 <strong>block</strong> 也是没有问题的，因为 <strong>ARC</strong> 会帮你做 <strong>copy</strong> 这个动作，但是为了显示指明程序中的 <strong>copy</strong> 动作，建议还是使用 <strong>copy</strong> 修饰符显式地指出这里的内存行为。</p>
 
                 <hr>
@@ -360,7 +360,7 @@
 <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 <!--wechat title img-->
-<img class="wechat-title-img" src="http://7xskiu.com1.z0.glb.clouddn.com/avatar.jpg">
+<img class="wechat-title-img" src="/images/global/avatar.JPG">
 </body>
 
 </html>
