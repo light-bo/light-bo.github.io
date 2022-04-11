@@ -14,6 +14,9 @@ git push
 echo '>>> submit source code success'
 
 cd ../light-bo.github.io
+echo '>>> switch to blog repo'
+pwd
+
 git add --all
 git commit -m "update"
 git push
